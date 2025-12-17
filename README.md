@@ -17,16 +17,21 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: #ff3399;
-      margin-top: 50px;
+      margin-top: 40px;
       animation: bounce 2s infinite;
+      text-shadow: 2px 2px #fff;
     }
 
     p {
-      font-size: 1.2rem;
-      margin: 20px;
+      font-size: 1.4rem;
+      margin: 20px 30px;
       color: #660033;
+      line-height: 1.6;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     img {
@@ -57,31 +62,55 @@
       top: 0;
       width: 10px;
       height: 10px;
-      background-color: #ff3399;
       opacity: 0.7;
-      animation: fall 3s linear infinite;
       z-index: 999;
+      border-radius: 50%;
+      animation: fall linear infinite;
     }
 
     @keyframes fall {
       0% { transform: translateY(-10px) rotate(0deg); }
       100% { transform: translateY(100vh) rotate(360deg); }
     }
+
+    /* Balloon */
+    .balloon {
+      position: fixed;
+      width: 50px;
+      height: 70px;
+      border-radius: 50%;
+      bottom: -100px;
+      animation: balloonMove linear infinite;
+      z-index: 998;
+    }
+
+    @keyframes balloonMove {
+      0% { bottom: -100px; transform: translateX(0) rotate(0deg);}
+      100% { bottom: 120%; transform: translateX(100px) rotate(360deg);}
+    }
+
   </style>
 </head>
 <body>
 
-  <h1>Happy 13th Birthday Abia! 🎉</h1>
+  <h1>🎉 Happy 13th Birthday Abia! 🎉</h1>
 
-  <p>Abia, may your day be filled with laughter, joy, and endless fun! You’re amazing and deserve the best birthday ever. 💖</p>
+  <p>
+    Abia, today is your special day! 🎈 May your 13th birthday be filled with laughter, love, and all the happiness in the world. 
+    You deserve to be celebrated in the biggest way possible! 💖 Dance, smile, and enjoy every moment, because you are amazing 
+    and your future is as bright as your beautiful heart. Here’s to magical memories, sparkling surprises, and endless fun. 
+    Happy Birthday, Abia! May this year bring you countless blessings and unforgettable moments. 🌟🎂
+  </p>
 
-  <!-- Add your pictures here -->
-  <img src="birthday1.jpg" alt="Birthday Pic 1">
-  <img src="birthday2.jpg" alt="Birthday Pic 2">
+  <!-- Online Images -->
+  <img src="https://images.unsplash.com/photo-1606788075761-97d73d2e9b02?crop=entropy&cs=tinysrgb&fit=max&w=400&h=400" alt="Birthday Cake">
+  <img src="https://images.unsplash.com/photo-1590080870063-742e0a6b2051?crop=entropy&cs=tinysrgb&fit=max&w=400&h=400" alt="Birthday Balloons">
 
-  <!-- Confetti JS -->
+  <!-- Confetti and Balloons JS -->
   <script>
-    const colors = ['#ff3399','#ff66cc','#ff99cc','#ffccff','#ff0066'];
+    const colors = ['#ff3399','#ff66cc','#ff99cc','#ffccff','#ff0066','#ff66ff'];
+
+    // Confetti
     for(let i=0;i<100;i++){
       let confetti = document.createElement('div');
       confetti.classList.add('confetti');
@@ -91,6 +120,17 @@
       confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
       document.body.appendChild(confetti);
     }
+
+    // Balloons
+    for(let i=0;i<10;i++){
+      let balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random()*window.innerWidth + 'px';
+      balloon.style.animationDuration = 5 + Math.random()*5 + 's';
+      balloon.style.background = `radial-gradient(circle at 30% 30%, ${colors[Math.floor(Math.random()*colors.length)]}, #fff)`;
+      document.body.appendChild(balloon);
+    }
   </script>
+
 </body>
 </html>
