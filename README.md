@@ -14,6 +14,7 @@
       background: linear-gradient(to bottom, #ffe6f2, #ffb3d9);
       overflow-x: hidden;
       text-align: center;
+      position: relative;
     }
 
     h1 {
@@ -32,16 +33,7 @@
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    img {
-      width: 80%;
-      max-width: 300px;
-      margin: 20px auto;
-      display: block;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: float 4s ease-in-out infinite;
+      animation: fadeIn 3s ease-in;
     }
 
     @keyframes bounce {
@@ -50,10 +42,9 @@
       60% { transform: translateY(-10px); }
     }
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* Confetti */
@@ -62,7 +53,7 @@
       top: 0;
       width: 10px;
       height: 10px;
-      opacity: 0.7;
+      opacity: 0.8;
       z-index: 999;
       border-radius: 50%;
       animation: fall linear infinite;
@@ -73,7 +64,7 @@
       100% { transform: translateY(100vh) rotate(360deg); }
     }
 
-    /* Balloon */
+    /* Balloons */
     .balloon {
       position: fixed;
       width: 50px;
@@ -89,6 +80,24 @@
       100% { bottom: 120%; transform: translateX(100px) rotate(360deg);}
     }
 
+    /* Sparkles */
+    .sparkle {
+      position: fixed;
+      width: 5px;
+      height: 5px;
+      background: gold;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkleMove 2s infinite;
+      z-index: 1000;
+    }
+
+    @keyframes sparkleMove {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-20px) scale(1.5); opacity: 0.5; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
   </style>
 </head>
 <body>
@@ -96,22 +105,23 @@
   <h1>🎉 Happy 13th Birthday Abia! 🎉</h1>
 
   <p>
-    Abia, today is your special day! 🎈 May your 13th birthday be filled with laughter, love, and all the happiness in the world. 
-    You deserve to be celebrated in the biggest way possible! 💖 Dance, smile, and enjoy every moment, because you are amazing 
-    and your future is as bright as your beautiful heart. Here’s to magical memories, sparkling surprises, and endless fun. 
-    Happy Birthday, Abia! May this year bring you countless blessings and unforgettable moments. 🌟🎂
+    Abia, today is all about YOU! 🎈 May your 13th birthday sparkle with joy, laughter, and magical moments. 
+    This year, may you discover new adventures, create beautiful memories, and shine brighter than ever before. 💖 
+    Dance, laugh, and celebrate with all your heart, because you are truly special and deserve the best. 
+    Here’s to endless fun, magical surprises, and the happiest birthday ever! 🌟🎂
   </p>
 
-  <!-- Online Images -->
-  <img src="https://images.unsplash.com/photo-1606788075761-97d73d2e9b02?crop=entropy&cs=tinysrgb&fit=max&w=400&h=400" alt="Birthday Cake">
-  <img src="https://images.unsplash.com/photo-1590080870063-742e0a6b2051?crop=entropy&cs=tinysrgb&fit=max&w=400&h=400" alt="Birthday Balloons">
+  <p>
+    You are amazing, Abia! May your 13th year bring you endless smiles, exciting adventures, and dreams come true. 
+    Always remember, you are loved, cherished, and celebrated every single day. 🎁✨ Let’s make this birthday unforgettable!
+  </p>
 
   <!-- Confetti and Balloons JS -->
   <script>
-    const colors = ['#ff3399','#ff66cc','#ff99cc','#ffccff','#ff0066','#ff66ff'];
+    const colors = ['#ff3399','#ff66cc','#ff99cc','#ffccff','#ff0066','#ff66ff','#ff99ff','#ffb3e6'];
 
     // Confetti
-    for(let i=0;i<100;i++){
+    for(let i=0;i<150;i++){
       let confetti = document.createElement('div');
       confetti.classList.add('confetti');
       confetti.style.left = Math.random() * window.innerWidth + 'px';
@@ -122,13 +132,23 @@
     }
 
     // Balloons
-    for(let i=0;i<10;i++){
+    for(let i=0;i<15;i++){
       let balloon = document.createElement('div');
       balloon.classList.add('balloon');
       balloon.style.left = Math.random()*window.innerWidth + 'px';
       balloon.style.animationDuration = 5 + Math.random()*5 + 's';
       balloon.style.background = `radial-gradient(circle at 30% 30%, ${colors[Math.floor(Math.random()*colors.length)]}, #fff)`;
       document.body.appendChild(balloon);
+    }
+
+    // Sparkles
+    for(let i=0;i<50;i++){
+      let sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random()*window.innerWidth + 'px';
+      sparkle.style.top = Math.random()*window.innerHeight + 'px';
+      sparkle.style.animationDuration = 1 + Math.random()*2 + 's';
+      document.body.appendChild(sparkle);
     }
   </script>
 
